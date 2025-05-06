@@ -1,5 +1,6 @@
 package com.cdac.hss.entities;
 
+import com.cdac.hss.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +14,9 @@ public class Role {
     @Column(name = "role_id")
     private int roleId;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "name")
+    private RoleName name;
 
 
 

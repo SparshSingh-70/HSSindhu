@@ -15,7 +15,7 @@ public class PartOfSpeech {
     private int id;
 
     @Column(name = "name")
-    private String pos_name;
+    private String name;
 
     // Getters and setters
 }

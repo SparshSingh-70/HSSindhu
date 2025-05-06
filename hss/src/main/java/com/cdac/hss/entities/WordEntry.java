@@ -9,21 +9,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor @NoArgsConstructor
 public class WordEntry {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int vid;
 
     private String word;
     private String english_translation;
-
-    @ManyToOne
-    @JoinColumn(name = "domain_id")
-    private Domain domain;
 
     @ManyToOne
     @JoinColumn(name = "added_By")
@@ -46,7 +44,7 @@ public class WordEntry {
     private VerificationStatus verificationStatus;
 
     private boolean isLive;
-    private int tempId;
+    private String tempId;
 
     @ManyToOne
     @JoinColumn(name = "part_of_speech_id")
@@ -62,6 +60,14 @@ public class WordEntry {
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "word_entry_domain_mapping",
+            joinColumns = @JoinColumn(name = "word_entry_id"),
+            inverseJoinColumns = @JoinColumn(name = "domain_id")
+    )
+    private List<Domain> domains = new ArrayList<>();
 
 
 }

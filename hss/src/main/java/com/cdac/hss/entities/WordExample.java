@@ -26,7 +26,7 @@ public class WordExample {
     @JoinColumn(name = "subdomain_id", referencedColumnName = "subdomain_id")
     private Subdomain subDomain;
 
-    @Column(name = "example")
+    @Column(name = "example", columnDefinition = "TEXT" )
     private String example;
 
     @ManyToOne

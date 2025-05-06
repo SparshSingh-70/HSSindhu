@@ -27,7 +27,7 @@ public class WordProverb {
     @JoinColumn(name = "subdomain_id", referencedColumnName = "subdomain_id")
     private Subdomain subDomain;
 
-    @Column(name = "proverb")
+    @Column(name = "proverb", columnDefinition = "TEXT")
     private String proverb;
 
     @ManyToOne

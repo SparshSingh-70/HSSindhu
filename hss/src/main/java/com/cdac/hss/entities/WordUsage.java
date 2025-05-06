@@ -26,7 +26,7 @@ public class WordUsage {
     @JoinColumn(name = "subdomain_id", referencedColumnName = "subdomain_id")
     private Subdomain subDomain;
 
-    @Column(name = "word_use")
+    @Column(name = "word_use", columnDefinition = "TEXT")
     private String wordUse;
 
     @ManyToOne

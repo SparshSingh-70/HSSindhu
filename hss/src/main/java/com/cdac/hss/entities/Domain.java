@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "domains")
 @Data
@@ -19,5 +22,10 @@ public class Domain {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "eng_name")
+    private String engName;
+
+    @ManyToMany(mappedBy = "domains")
+    private List<WordEntry> wordEntries = new ArrayList<>();
 
 }

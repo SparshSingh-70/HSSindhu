@@ -15,5 +15,5 @@ public class WordOrigin {
     private int id;
 
     @Column(name = "name")
-    private String origin_name;
+    private String originName;
 }

@@ -40,4 +40,23 @@ public class JwtProvider {
         return String.valueOf(claims.get("authorities"));
     }
 
+    private static Claims getClaims(String token) {
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    public static String extractEmail(String token) {
+        return getClaims(token).get("email", String.class);
+    }
+
+    public static String extractAuthorities(String token) {
+        return getClaims(token).get("authorities", String.class);
+    }
+
 }

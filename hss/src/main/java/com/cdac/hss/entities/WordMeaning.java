@@ -25,7 +25,7 @@ public class WordMeaning {
     @JoinColumn(name = "subdomain_id", referencedColumnName = "subdomain_id")
     private Subdomain subDomain;
 
-    @Column(name = "meaning")
+    @Column(name = "meaning", columnDefinition = "TEXT")
     private String meaning;
 
     @ManyToOne
