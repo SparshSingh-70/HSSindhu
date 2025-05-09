@@ -12,6 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class SignUpRequest {
 
+    private Integer userId; //09-05-2025 Changes done to import DB
     private String username;
     private String email;
     private String password;

@@ -46,7 +46,7 @@ public class UserService {
 
         User savedUser = userRepository.save(user);
 
-        List<UserRole> userRolesList = new ArrayList<>();
+        /*List<UserRole> userRolesList = new ArrayList<>();
         for (Integer roleId : roles) {
             for (Integer domainId : domains) {
 
@@ -57,6 +57,24 @@ public class UserService {
                        null, domainRepository.findById(domainId).get(),
                         subdomainRepository.findById(293).get());
 
+                userRolesList.add(newUserRole);
+            }
+        }*/
+
+        List<UserRole> userRolesList = new ArrayList<>();
+        Subdomain subdomain = subdomainRepository.findById(293)
+                .orElseThrow(() -> new RuntimeException("Subdomain not found"));
+
+        for (Integer roleId : roles) {
+            Role role = roleRepository.findById(roleId)
+                    .orElseThrow(() -> new RuntimeException("Role not found"));
+
+            for (Integer domainId : domains) {
+                Domain domain = domainRepository.findById(domainId)
+                        .orElseThrow(() -> new RuntimeException("Domain not found"));
+
+                UserRoleId userRoleId = new UserRoleId(savedUser.getUserId(), domainId, roleId, 293);
+                UserRole newUserRole = new UserRole(userRoleId, savedUser, role, null, domain, subdomain);
                 userRolesList.add(newUserRole);
             }
         }

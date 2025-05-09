@@ -21,10 +21,24 @@ public class PublicController {
         return "Search Words for testing";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/searchAll")
     public ResponseEntity<List<WordResponse>> getWordsList(@RequestParam String query){
-        List<WordResponse> wordResponses = wordService.searchWords(query);
+        List<WordResponse> wordResponses = wordService.searchWords(query.trim());
+        System.out.println("First Line");
         return new ResponseEntity<>(wordResponses, HttpStatus.OK);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<WordResponse> getSingleWord(@RequestParam String query) {
+        System.out.println("First Line");
+        WordResponse response = wordService.getWordDetails(query.trim());
+        System.out.println("Second Line");
+        if (response == null) {
+            System.out.println("Inside response == null");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }
 

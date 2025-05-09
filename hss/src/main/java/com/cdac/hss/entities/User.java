@@ -14,7 +14,7 @@ import java.util.List;
 public class User {
 
     @Id
-  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int userId;
     @Column(name = "username")
@@ -33,8 +33,11 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<UserRole> userRoles;
 
+  /*  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<UserRole> userRoles;*/
 
-    public User(String username, String email, String encode, String mobile,String designation) {
+    public User(Integer id, String username, String email, String encode, String mobile,String designation) {
+        this.userId = id;
         this.username = username;
         this.email = email;
         this.password = encode;

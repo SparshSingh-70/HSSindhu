@@ -24,7 +24,7 @@ public class WordTranslation {
     @Column(name = "language")
     private String language;
 
-    @Column(name = "translation")
+    @Column(name = "translation",columnDefinition = "TEXT")
     private String translation;
 
 }

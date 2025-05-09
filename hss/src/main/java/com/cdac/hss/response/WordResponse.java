@@ -12,6 +12,7 @@ import java.util.List;
 public class WordResponse {
 
     private String word;
+    private String englishTranslation;
     private List<String> meanings;
     private List<String> proverbs;
     private List<String> synonyms;

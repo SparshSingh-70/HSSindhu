@@ -22,5 +22,8 @@ public class Subdomain {
     @JoinColumn(name = "domain_id", referencedColumnName = "domain_id")
     private Domain domain;
 
+    @Column(name = "subdomain_sequence_id")
+    private Integer subdomainSequenceId;
+
 
 }
